@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}My drive{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'mydrive/styles.css' %}" rel="stylesheet">
+        <script type="text/javascript" src="{% static 'mydrive/jquery.js' %}" ></script>
+              <link rel="stylesheet" media="screen" type="text/css"  href="{% static 'mydrive/all.min.css' %}" />
+              	<meta name='viewport' content='width=device-width, user-scalable=no, maximum-scale=0.9,initial-scale=0.9'  />
+    </head>
+    <body>
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">My drive</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+
+
+
+            {% if user.is_authenticated %}
+            
+            {% block header %}
+            {% endblock %}
+
+            <li class="nav-item">
+              <a class="nav-link"  href="{% url 'logout' %}">Log out</a>
+            </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Register</a>
+                </li>
+            {% endif %}
+
+
+          </ul>
+          <form class="form-inline my-2 my-lg-0" id="formsearch" action="search" method="GET">
+            <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+
+      </nav>
+
+
+
+        <div class="body">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+
+</html>

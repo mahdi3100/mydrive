@@ -1,0 +1,76 @@
+{% extends "mydrive/layout.html" %}
+
+
+{% block header%}
+<li class="nav-item active">
+  <a class="nav-link" href="/">Home </a>
+</li>
+<li class="nav-item ">
+  <a class="nav-link"  href="{% url 'settingsUser' %}">Settings </a>
+</li>
+{%endblock%}
+
+{% block body %}
+
+
+
+
+
+<div id="centercontent">
+
+
+<div class="rootdir">
+
+   {{error}}
+
+   {% for file in files %}
+   <div class="card" style="width: 18rem;" path="{{file.path}}" name="{{file.name}}">
+     <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+        {% if file.format == "jpg" or file.format == "png" or file.format == "jpeg" or file.format == "gif" %}
+        <img src="/media{{file.path}}/{{file.name}}" alt="{{file.name}}"/>
+        {%else%}
+           <i class="fas fa-file iconfile"></i>
+
+        {%endif%}
+
+
+     <div class="card-body">
+
+
+       <h5 class="card-title">{{file.name}}</h5>
+       {% if file.username != None %}
+            By : {{file.username}}
+        {%endif%}
+<br>
+
+       {% if file.download != None %}
+       <div class="btn-group" role="group" aria-label="Basic example">
+           <button type="button" class="btn btn-secondary"><i class="iconcard download fas fa-download"></i></button>
+
+         </div>
+         {% endif %}
+     </div>
+   </div>
+   {% endfor %}
+
+</div>
+
+
+
+</div>
+<script type="text/javascript">
+$(document).on("click",".download",function(){downloadDir(this)})
+function downloadDir(ele){
+
+var getPath = $(ele).parents(".card").attr("path");
+var getNamefile = $(ele).parents(".card").attr("name");
+
+
+
+location.href="/download?path="+getPath+"&dir="+getNamefile;
+
+
+
+}
+</script>
+{% endblock %}

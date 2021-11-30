@@ -1,0 +1,16 @@
+## Requirements 
+
+ 
+I used magic to get the exact format of file when user click on download.
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install magic. 
+
+
+ 
+
+```bash 
+
+pip3 install python-magic 
+
+``` 
+

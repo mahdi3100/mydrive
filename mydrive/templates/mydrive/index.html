@@ -1,0 +1,65 @@
+
+{% extends "mydrive/layout.html" %}
+{% load static %}
+
+{% block header%}
+<li class="nav-item active">
+  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span> </a>
+</li>
+<li class="nav-item ">
+  <a class="nav-link"  href="{% url 'settingsUser' %}">Settings </a>
+</li>
+{%endblock%}
+
+{% block body %}
+
+
+<div id="centercontent">
+
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-radius: 8px;">
+
+    <div class="navbar-collapse" >
+      <ul class="flex-row navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link emplacement" href="#">Current path : <em>/</em></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" ><i class="backward iconbar fas fa-arrow-left"></i></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#"><i class="adddir iconbar fas fa-folder-plus"></i></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#"><form method="POST" enctype="multipart/form-data" action="{% url 'setFiles' %}"><input class="file-input2" type="file" name="myFiles" multiple><i class="iconbar fas fa-file-medical"></i><progress></progress></form></a>
+        </li>
+
+
+
+
+
+      </ul>
+
+    </div>
+  </nav>
+
+<div class="rootdir">
+
+</div>
+
+
+
+</div>
+
+<form id="formprivercy">
+<label for="privateradio">Private</label><input value="private" id="privateradio" checked="checked" type="radio" name="privercy" /><br>
+<label for="publicradio">Public</label><input id="publicradio" value="public" type="radio" name="privercy" /><br>
+<input type="hidden" name="elementname"/>
+<input type="button" class="privercycancel"value="Cancel"/>
+
+</form>
+
+<script type="text/javascript" src="{% static 'mydrive/index.js' %}" ></script>
+
+{% endblock %}

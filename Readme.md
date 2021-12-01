@@ -197,9 +197,9 @@ pip3 install python-magic
 
 ```bach
 cd /to/path/drive
-python manage.py makemigrations mydriver
-python manage.py migrate --run-syncdb
-python manage.py runserver
+python3 manage.py makemigrations mydriver
+python3 manage.py migrate --run-syncdb
+python3 manage.py runserver
 ```
 
 In case you are using Python 3 , change python to python3

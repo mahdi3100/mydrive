@@ -6,12 +6,6 @@ Mydrive is a python and javascript based website using Django API to store files
 
  
 
-## Distinctiveness 
-
- 
-I noticed in previous projects that there is no how to manage files and directories. I find that a drive is a better option, it's more complicated in side of managing and coding. In mydrive user can upload multi files also delete , rename , move , copy , download , zipping , all these functions for directories and files are not mentioned in previous projects .  
-
-
 Files and direcorties are stored in Media which was written automatically by Settings.py file:
 
 ```python 
